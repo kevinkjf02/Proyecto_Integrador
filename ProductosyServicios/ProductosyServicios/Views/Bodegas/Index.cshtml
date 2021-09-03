@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProductosyServicios.Entities.Bodega>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<h1>Bodegas</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo</a>
+</p><div class="text-right form-inline">
+    
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BodegaId" class="btn btn-warning"> Editar <i class="bi bi-pen"></i></a> 
+                    <a asp-action="Details" asp-route-id="@item.BodegaId" class="btn btn-info"> Detalle <i class="bi bi-border-width"></i></a> 
+                    <a asp-action="Delete" asp-route-id="@item.BodegaId" class="btn btn-danger"> Eliminar <i class="bi bi-trash"></i> </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

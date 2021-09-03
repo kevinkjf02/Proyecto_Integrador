@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ProductosyServicios.Entities.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+<h1>Productos</h1>
+
+<p>
+    <a asp-action="Create">Creae Nuevo</a>
+</p>
+@*<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Filtro: <input type="text" name="searchString" value="@ViewData["CurrentFiler"]" />
+            <input type="submit" value="Buscar" class="btn btn-danger" />
+            <a asp-action="Index">Todos los Registrps</a>
+        </p>
+    </div>
+
+</form>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bodega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bodega.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proveedor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodigoProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bodega.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bodega.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proveedor.Cedula)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProductoId" class="btn btn-warning"> Editar <i class="bi bi-pen"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.ProductoId" class="btn btn-info"> Detalle <i class="bi bi-border-width"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProductoId" class="btn btn-danger"> Eliminar <i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

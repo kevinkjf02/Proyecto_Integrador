@@ -1,0 +1,53 @@
+﻿@model ProductosyServicios.Entities.Producto
+
+@{
+    ViewData["Title"] = "Create";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+<h1>Crear</h1>
+
+<h4>Producto</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CodigoProducto" class="control-label"></label>
+                <input asp-for="CodigoProducto" class="form-control" />
+                <span asp-validation-for="CodigoProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProveedorId" class="control-label"></label>
+                <select asp-for="ProveedorId" class="form-control" asp-items="ViewBag.ProveedorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BodegaId" class="control-label"></label>
+                <select asp-for="BodegaId" class="form-control" asp-items="ViewBag.BodegaId"></select>
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Crear" class="btn btn-primary"> Crear <i class="bi bi-save"></i>  </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Editar lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ProductosyServicios.Entities.Inventario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+<h1>Inventario</h1>
+
+<p>
+    <a asp-action="Create">Crear Nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Catalogo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto.CodigoProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto.Nombre  )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Catalogo.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.InventarioId" class="btn btn-warning"> Editar <i class="bi bi-pen"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.InventarioId" class="btn btn-info"> Detalle <i class="bi bi-border-width"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.InventarioId" class="btn btn-danger"> Eliminar <i class="bi bi-trash"></i></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
